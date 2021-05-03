@@ -32,6 +32,7 @@ const VideoChat = () => {
         },
       }).then((res) => res.json());
       Video.connect(data.token, {
+        audio: true,
         name: roomName,
       })
         .then((room) => {
