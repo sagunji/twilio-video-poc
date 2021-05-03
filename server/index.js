@@ -23,8 +23,6 @@ app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
   res.setHeader('Content-Type', 'application/json');
 
-  console.log(`${name} joined!`)
-
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
@@ -36,9 +34,13 @@ app.get('/video/token', (req, res) => {
 });
 
 app.post('/video/token', (req, res) => {
+  // request who is asking & to whom he/she is asking
+  // get relationship
+  // establish connection
+  // otherwise connection possible hudaina
+
   const identity = req.body.identity;
   const room = req.body.room;
-  console.log(identity, room, '\n')
 
   try {
     const token = videoToken(identity, room, config);
@@ -47,7 +49,6 @@ app.post('/video/token', (req, res) => {
   } catch(e) {
     console.log(e)
   }
-  
 });
 
 app.listen(3001, () =>
