@@ -32,9 +32,12 @@ const VideoChat = () => {
           "Content-Type": "application/json",
         },
       }).then((res) => res.json());
+
+
+      const tracks = await createLocalTracks({ audio: true });
+
       Video.connect(data.token, {
-        audio: true,
-        video: true,
+        tracks,
         name: roomName,
       })
         .then((room) => {
