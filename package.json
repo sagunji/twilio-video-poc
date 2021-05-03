@@ -21,7 +21,7 @@
     "dev": "run-p server start",
     "worker": "node server/index.js"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://gentle-taiga-97257.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
