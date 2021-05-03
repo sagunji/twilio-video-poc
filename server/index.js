@@ -1,5 +1,6 @@
   
 const config = require('./config');
+var cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
@@ -18,6 +19,8 @@ const sendTokenResponse = (token, res) => {
     })
   );
 };
+
+app.use(cors());
 
 app.get('/api/greeting', (req, res) => {
   const name = req.query.name || 'World';
