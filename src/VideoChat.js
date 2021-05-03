@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { connect, createLocalTracks } from "twilio-video";
+import Video , { createLocalTracks } from "twilio-video";
 import Lobby from "./Lobby";
 import Room from "./Room";
 
@@ -32,16 +32,15 @@ const VideoChat = () => {
         },
       }).then((res) => res.json());
 
-      const tracks = await createLocalTracks({
-        audio: true,
-        video: { facingMode: 'user' }
-      });
-
-      connect(data.token, {
-        tracks,
+      Video.connect(data.token, {
+        video: true,
         name: roomName,
       })
         .then((room) => {
+          Video.createLocalAudioTrack().then(function(localTrack) {
+            room.localParticipant.publishTrack(localTrack);
+          });
+
           setConnecting(false);
           setRoom(room);
         })
