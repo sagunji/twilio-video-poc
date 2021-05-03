@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import Video from "twilio-video";
+import Twilio from 'twilio-video';
 import Lobby from "./Lobby";
 import Room from "./Room";
 
@@ -32,15 +32,10 @@ const VideoChat = () => {
         },
       }).then((res) => res.json());
 
-      Video.connect(data.token, {
-        video: true,
+      Twilio.connect(data.token, {
         name: roomName,
       })
         .then((room) => {
-          Video.createLocalAudioTrack().then(function(localTrack) {
-            room.localParticipant.publishTrack(localTrack);
-          });
-
           setConnecting(false);
           setRoom(room);
         })
