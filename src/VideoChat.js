@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import Video from "twilio-video";
+import Video, { createLocalTracks } from "twilio-video";
 import Lobby from "./Lobby";
 import Room from "./Room";
 
@@ -8,6 +8,7 @@ const VideoChat = () => {
   const [roomName, setRoomName] = useState("");
   const [room, setRoom] = useState(null);
   const [connecting, setConnecting] = useState(false);
+  
 
   const handleUsernameChange = useCallback((event) => {
     setUsername(event.target.value);
@@ -33,6 +34,7 @@ const VideoChat = () => {
       }).then((res) => res.json());
       Video.connect(data.token, {
         audio: true,
+        video: true,
         name: roomName,
       })
         .then((room) => {
