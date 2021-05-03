@@ -1,1 +1,1 @@
-web: yarn install && node ./server/index.js
+worker: yarn install && node ./server/index.js

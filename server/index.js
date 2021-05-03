@@ -51,6 +51,8 @@ app.post('/video/token', (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3001, () =>
-console.log(`Express server is running on port ${process.env.PORT || 3001}`)
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), () =>
+console.log(`Express server is running on port ${app.get('port')}`)
 );
