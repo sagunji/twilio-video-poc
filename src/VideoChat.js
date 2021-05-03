@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import Video , { createLocalTracks } from "twilio-video";
+import Video from "twilio-video";
 import Lobby from "./Lobby";
 import Room from "./Room";
 
