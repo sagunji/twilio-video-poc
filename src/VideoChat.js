@@ -5,7 +5,7 @@ import Room from "./Room";
 
 const VideoChat = () => {
   const [username, setUsername] = useState("");
-  const [roomName, setRoomName] = useState("");
+  const [roomName, setRoomName] = useState("test");
   const [room, setRoom] = useState(null);
   const [connecting, setConnecting] = useState(false);
 
@@ -21,12 +21,8 @@ const VideoChat = () => {
     async (event) => {
       event.preventDefault();
       setConnecting(true);
-      const data = await fetch("https://gentle-taiga-97257.herokuapp.com/video/token", {
-        method: "POST",
-        body: JSON.stringify({
-          identity: username,
-          room: roomName,
-        }),
+      const data = await fetch("https://stride-learning.herokuapp.com/getCallToken/sagun", {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
