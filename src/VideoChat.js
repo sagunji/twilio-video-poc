@@ -5,7 +5,7 @@ import Room from "./Room";
 
 const VideoChat = () => {
   const [username, setUsername] = useState("");
-  const [roomName, setRoomName] = useState("test");
+  const [roomName, setRoomName] = useState("");
   const [room, setRoom] = useState(null);
   const [connecting, setConnecting] = useState(false);
 
@@ -21,7 +21,7 @@ const VideoChat = () => {
     async (event) => {
       event.preventDefault();
       setConnecting(true);
-      const data = await fetch("https://stride-learning.herokuapp.com/getCallToken/sagun", {
+      const data = await fetch(`https://stride-learning.herokuapp.com/getCallToken/${username}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
