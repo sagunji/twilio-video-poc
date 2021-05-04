@@ -21,8 +21,12 @@ const VideoChat = () => {
     async (event) => {
       event.preventDefault();
       setConnecting(true);
-      const data = await fetch(`https://stride-learning.herokuapp.com/getCallToken/${username}`, {
-        method: "GET",
+      const data = await fetch("https://gentle-taiga-97257.herokuapp.com/video/token", {
+        method: "POST",
+        body: JSON.stringify({
+          identity: username,
+          room: roomName,
+        }),
         headers: {
           "Content-Type": "application/json",
         },
