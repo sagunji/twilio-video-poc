@@ -90,6 +90,12 @@ button:hover {
   top: 0;
   right: 20px;
 }
+.room button.child {
+  top: 40px;
+}
+.room button.child2 {
+  top: 80px;
+}
 .room > h3 {
   text-align: center;
   font-weight: 300;
